@@ -153,3 +153,13 @@ document.addEventListener('DOMContentLoaded', () => {
     // Tambahkan event listener untuk search box
     document.getElementById('searchInput').addEventListener('keyup', searchTable);
 });
+
+// Inisialisasi
+document.addEventListener('DOMContentLoaded', () => {
+  // Toggle sidebar di mobile
+  document.addEventListener('click', function(e) {
+    if (e.target.closest('.menu-toggle')) {
+      document.querySelector('.sidebar').classList.toggle('active');
+      document.querySelector('.main-content').classList.toggle('sidebar-active');
+    }
+  });
