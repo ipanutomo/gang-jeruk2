@@ -29,13 +29,13 @@
 
       <div class="content-area">
         <div class="content-header">
-          <h2>Data Transaksi Kas</h2>
+          <h2>Laporan Keuangan</h2>
           <div class="actions">
             <div class="search-container">
               <i class="fas fa-search"></i>
               <input type="text" id="searchInput" class="search-box" placeholder="Cari transaksi...">
             </div>
-            <button class="btn refresh-btn" onclick="loadData()">
+            <button class="btn refresh-btn" id="refreshBtn">
               <i class="fas fa-sync-alt"></i> Refresh
             </button>
           </div>
@@ -47,11 +47,23 @@
               <i class="fas fa-spinner fa-spin"></i>
               <span>Memuat data transaksi...</span>
             </div>
-            <div id="error" class="error-state"></div>
-
-<div class="table-responsive">
-  <div id="data-container">
-                <!-- Data akan diisi oleh JavaScript -->
+            <div id="error" class="error-state" style="display: none;"></div>
+            
+            <div class="table-responsive">
+              <table id="dataTable" class="modern-table">
+                <thead>
+                  <tr>
+                    <th>No</th>
+                    <th>Tanggal</th>
+                    <th>Keterangan</th>
+                    <th>Pemasukan</th>
+                    <th>Pengeluaran</th>
+                    <th>Saldo</th>
+                  </tr>
+                </thead>
+                <tbody id="tableBody">
+                  <!-- Data akan diisi oleh JavaScript -->
+                </tbody>
               </table>
             </div>
           </div>
@@ -62,7 +74,7 @@
 
   <script src="assets/js/laporan-kas.js"></script>
   <script>
-    // Load sidebar
+    // Load sidebar content
     fetch('components/sidebar.html')
       .then(response => response.text())
       .then(data => {
@@ -71,11 +83,6 @@
       .catch(error => {
         console.error('Error loading sidebar:', error);
       });
-
-    function loadData() {
-      // Fungsi ini bisa dihubungkan ke logic fetch JS-mu jika ada
-      console.log("Reload data kas...");
-    }
   </script>
 </body>
 </html>
