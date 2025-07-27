@@ -8,14 +8,10 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-  <!-- Navigation Wrapper -->
   <div class="app-container">
-    <!-- Sidebar will be loaded here -->
     <div id="sidebar-container"></div>
 
-    <!-- Main Content -->
     <main class="main-content">
-      <!-- Top Navigation -->
       <header class="top-nav">
         <div class="nav-left">
           <button class="menu-toggle">
@@ -31,16 +27,15 @@
         </div>
       </header>
 
-      <!-- Content Area -->
       <div class="content-area">
         <div class="content-header">
-          <h2>Laporan Keuangan</h2>
+          <h2>Data Transaksi Kas</h2>
           <div class="actions">
             <div class="search-container">
               <i class="fas fa-search"></i>
               <input type="text" id="searchInput" class="search-box" placeholder="Cari transaksi...">
             </div>
-            <button class="btn refresh-btn">
+            <button class="btn refresh-btn" onclick="loadData()">
               <i class="fas fa-sync-alt"></i> Refresh
             </button>
           </div>
@@ -53,11 +48,11 @@
               <span>Memuat data transaksi...</span>
             </div>
             <div id="error" class="error-state"></div>
-            
+
             <div class="table-responsive">
-              <div id="data-container">
+              <table id="dataTableKas" class="modern-table">
                 <!-- Data akan diisi oleh JavaScript -->
-              </div>
+              </table>
             </div>
           </div>
         </div>
@@ -67,7 +62,7 @@
 
   <script src="assets/js/laporan-kas.js"></script>
   <script>
-    // Load sidebar content
+    // Load sidebar
     fetch('components/sidebar.html')
       .then(response => response.text())
       .then(data => {
@@ -76,6 +71,11 @@
       .catch(error => {
         console.error('Error loading sidebar:', error);
       });
+
+    function loadData() {
+      // Fungsi ini bisa dihubungkan ke logic fetch JS-mu jika ada
+      console.log("Reload data kas...");
+    }
   </script>
 </body>
 </html>
